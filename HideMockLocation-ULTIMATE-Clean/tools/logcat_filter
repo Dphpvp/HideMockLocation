@@ -1,0 +1,4 @@
+#!/system/bin/sh
+
+# Filtered logcat that hides mock location related logs
+/system/bin/logcat.real "$@" | grep -v -i -E "(mock|Mock|MOCK).*(location|Location|LOCATION)|location.*(mock|Mock|MOCK)|isFromMockProvider|setIsFromMockProvider|FakeGPS|fake.gps"

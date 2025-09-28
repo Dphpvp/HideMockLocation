@@ -1,0 +1,6 @@
+id=hidemocklocation_universal
+name=Hide Mock Location Universal
+version=v3.0.0-ULTIMATE
+versionCode=300
+author=auag0
+description=ULTIMATE systemless mock location hiding: Framework patches, system call hooks, sensor spoofing, memory obfuscation, timing mimicking, network validation, hardware spoofing, kernel-level stealth for Android 9-16+

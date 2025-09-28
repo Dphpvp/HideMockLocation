@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- HideMockLocation Universal - System Configuration -->
+<config>
+    <!-- Hide mock location from system configuration -->
+    <hidden-api-whitelist name="android.location.Location">
+        <method signature="android.location.Location#isFromMockProvider()"/>
+        <method signature="android.location.Location#isMock()"/>
+        <method signature="android.location.Location#setIsFromMockProvider(boolean)"/>
+        <method signature="android.location.Location#setMock(boolean)"/>
+    </hidden-api-whitelist>
+
+    <!-- Prevent apps from detecting mock location settings -->
+    <system-user-whitelisted-app package="android"/>
+
+    <!-- Override location service configurations -->
+    <privapp-permissions package="com.android.location.fused">
+        <permission name="android.permission.LOCATION_HARDWARE"/>
+        <permission name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"/>
+    </privapp-permissions>
+
+    <!-- Ensure GPS and network location appear legitimate -->
+    <allow-in-power-save package="com.android.location.fused"/>
+    <allow-in-data-usage-save package="com.android.location.fused"/>
+</config>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- HideMockLocation Universal - Location Permissions Override -->
+<permissions>
+    <!-- Override location permissions to hide mock location capabilities -->
+    <feature name="android.hardware.location" />
+    <feature name="android.hardware.location.network" />
+    <feature name="android.hardware.location.gps" />
+
+    <!-- Hide mock location feature -->
+    <feature name="android.software.mock_location" notLowRam="true">
+        <unavailable-feature name="android.software.mock_location" />
+    </feature>
+
+    <!-- Ensure location services appear legitimate -->
+    <library name="android.location"
+            file="/system/framework/android.location.jar" />
+
+    <!-- Override location provider configurations -->
+    <feature name="android.hardware.sensor.accelerometer" />
+    <feature name="android.hardware.sensor.compass" />
+    <feature name="android.hardware.sensor.gyroscope" />
+</permissions>

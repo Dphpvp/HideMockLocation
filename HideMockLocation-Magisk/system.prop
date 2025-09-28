@@ -1,0 +1,32 @@
+# HideMockLocation Universal - System Properties
+# These properties are loaded during boot to hide mock location settings
+
+# Disable mock location globally
+ro.allow.mock.location=0
+persist.sys.mock_location=0
+persist.vendor.mock_location=0
+ro.config.mock_location=0
+
+# Disable debug mode indicators
+ro.debuggable=0
+ro.secure=1
+
+# GPS and location service properties
+persist.vendor.radio.enable_mock_location=0
+ro.config.gps_lpp_profile=0
+persist.vendor.location.nlp_threshold=1000
+
+# Privacy and security enhancements
+ro.build.selinux=1
+persist.vendor.radio.snapshot_timer=0
+persist.vendor.radio.snapshot_enabled=0
+
+# System integrity properties
+ro.boot.verifiedbootstate=green
+ro.boot.flash.locked=1
+ro.boot.veritymode=enforcing
+
+# Developer options override
+persist.sys.usb.config=none
+ro.adb.secure=1
+persist.sys.developer_options=0

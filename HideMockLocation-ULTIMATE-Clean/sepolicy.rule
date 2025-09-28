@@ -1,0 +1,34 @@
+# HideMockLocation Universal - SELinux Policy Rules
+# These rules ensure proper permissions for hiding mock location
+
+# Allow system server to access location services without mock detection
+allow system_server location_service:service_manager find
+allow system_server location_service:binder call
+
+# Prevent apps from detecting mock location through SELinux denials
+dontaudit untrusted_app system_file:file read
+dontaudit untrusted_app location_service:service_manager find
+
+# Allow our module to modify system properties
+allow init system_prop:property_service set
+allow init default_prop:property_service set
+
+# Location service permissions
+allow location_service system_file:file read
+allow location_service location_service:capability { setuid setgid }
+
+# Hide mock location from logcat and system logs
+dontaudit all_domains kernel:system module_request
+dontaudit all_domains init:unix_stream_socket connectto
+
+# Prevent detection through proc filesystem
+dontaudit untrusted_app proc:file read
+dontaudit untrusted_app proc_net:file read
+
+# GPS and location provider permissions
+allow gps_service system_file:file execute
+allow gps_service location_service:binder call
+
+# System server location access
+allow system_server gps_service:service_manager find
+allow system_server location_service:unix_stream_socket connectto
